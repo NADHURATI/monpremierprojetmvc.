@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/programmetv.css">
+
+    <title>Programmes</title>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="apropos">Apropos</a></li>
+                <li><a href="programmetv">Programme tv</a></li>
+        
+    </header>
+
+    <h1>Liste des Programmes</h1>
+
+    <div class="programme-container">
+        <% programmes.forEach(function(programme) { %>
+            <div class="programme-card">
+                <% if (programme.titre) { %>
+                    <h3><%= programme.titre %></h3>
+                <% } %>
+                <% if (programme.poste) { %>
+                    <p><strong>Poste :</strong> <%= programme.poste %></p>
+                    <p><strong>Horaire Début :</strong> <%= programme.horairedebut %></p>
+                    <p><strong>Horaire Fin :</strong> <%= programme.horairefin %></p>
+                <% } %>
+            </div>
+        <% }); %>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ChaineTV - Tous droits réservés</p>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,111 @@
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navigation */
+nav {
+    background-color:black;
+    padding: 15px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color:black;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px;
+   
+    }
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Header */
+header {
+    
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Conteneur principal */
+.programme-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Cartes des programmes */
+.programme-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+.programme-card:hover {
+    transform: scale(1.05);
+}
+
+/* Titres des programmes */
+.programme-card h3 {
+    color:black;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Texte des détails */
+.programme-card p {
+    color:black;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+    background-color:black;
+    color: white;
+    font-size: 14px;
+}

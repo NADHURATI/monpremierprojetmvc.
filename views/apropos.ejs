@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/apropos.css">
+    <title>Liste des Équipes</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/apropos">A propos</a></li>
+                <li><a href="/programmetv">Programme TV</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Liste des Membres de l'Équipe</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom de l'Équipe</th>
+                <th>Poste</th>
+                <th>Responsable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% equipe.forEach(function(equipe) { %>
+                <tr>
+                    <td><%= equipe.id %></td>
+                    <td><%= equipe.nom %></td>
+                    <td><%= equipe.poste %></td>
+                    <td><%= equipe.responsable %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+
