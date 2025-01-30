@@ -26,13 +26,13 @@ app.use(express.urlencoded({extended: false}));
 // L'endroit ou se situent les vues qui saffichent sur la navigateur
 app.set("views", "./views");
 
-// Je précise le moteurde lecture de vues à savoir ejs
+// Je précise le moteur de lecture de vues à savoir ejs
 app.set("view engine", "ejs");
 
 // précise le répertoire 'public' qui contient les fichiers statics
 app.use(express.static("public"));
 
-// rOUTE "/apropos" avec la méthode "GET"
+// ROUTE "/apropos" avec la méthode "GET"
 app.get("/programmetv", (req, res) => {
     const programmetitre = [
         { titre: "chigoma" },
@@ -48,14 +48,23 @@ app.get("/programmetv", (req, res) => {
 });
 
 app.get("/apropos", (req, res) => {
-    const equipe = [
-        { nom: "Equipe A", poste: "Programmeur d'émission", responsable: "Alice Dupont" },
-        { nom: "Equipe B", poste: "Directrice générale", responsable: "Claire Lefevre" },
-        { nom: "Equipe C", poste: "Réalisation", responsable: "Marc Bernard" }
-    ];
-
-    res.render("apropos", { equipe: equipe });
+    req.getConnection((erreur, connection) => {
+        if (erreur) {
+            console.log("Erreur de connexion à la base de données", erreur);
+        } 
+        
+        connection.query("SELECT * FROM equipe", (err, resultat) => {
+            if (err) {
+                console.log("Erreur lors de l'exécution de la requête :", err);
+            } 
+            
+            console.log("Résultat :", resultat);
+            res.render("apropos", { resultat });
+        });
+    });
 });
+
+   
 
 
 
