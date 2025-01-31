@@ -33,12 +33,29 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // ROUTE "/apropos" avec la méthode "GET"
+<<<<<<< HEAD
 
+=======
+app.get("/programmetv", (req, res) => {
+    const programmetitre = [
+        { titre: "chigoma" },
+        { titre: "manzaraka" },
+        { titre: "debat" },
+        { titre: "chant" },
+        { poste: "programmeur d'émission", horairedebut: "23:00:00", horairefin: "02:00:00" },
+        { poste: "camera men", horairedebut: "15:00:00", horairefin: "19:00:00" },
+        { poste: "ingénieur", horairedebut: "13:00:00", horairefin: "18:00:00" },
+        { poste: "réalisateur", horairedebut: "07:00:00", horairefin: "08:00:00" }
+    ];
+    res.render("programmetv", { programmes: programmetitre });
+});
+>>>>>>> 4e07aa702511a6144cbc5df1aaccdbd83f1dac4f
 
 app.get("/apropos", (req, res) => {
     req.getConnection((erreur, connection) => {
         if (erreur) {
             console.log("Erreur de connexion à la base de données", erreur);
+<<<<<<< HEAD
         }
         connection.query("SELECT * FROM equipe", [], (err, resultat) => {
             if (err) {
@@ -64,9 +81,22 @@ app.get("/programmetv", (req, res) => {
             console.log("Données récupérées :", resultat);
             // Assurez-vous que 'resultat' est bien passé sous le nom 'equipes' dans la vue
             res.render("programmetv", { emissions: resultat });
+=======
+        } 
+        
+        connection.query("SELECT * FROM equipe", (err, resultat) => {
+            if (err) {
+                console.log("Erreur lors de l'exécution de la requête :", err);
+            } 
+            
+            console.log("Résultat :", resultat);
+            res.render("apropos", { resultat });
+>>>>>>> 4e07aa702511a6144cbc5df1aaccdbd83f1dac4f
         });
     });
 });
+
+   
 
 
 
