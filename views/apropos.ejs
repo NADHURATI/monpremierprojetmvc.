@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/apropos.css">
+    <link rel="stylesheet" href="/css/apropos.css">
     <title>Liste des Équipes</title>
 </head>
 
@@ -13,8 +13,9 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/apropos">A propos</a></li>
+                <li><a href="/apropos">À propos</a></li>
                 <li><a href="/programmetv">Programme TV</a></li>
+                <li><a href="/formulaireprogrammetv">Formulaire programme tv</a></li>
             </ul>
         </nav>
     </header>
@@ -33,11 +34,7 @@
             </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
-            <% equipes.forEach(equipe => { %> <!-- Utilisez 'equipes' ici, car c'est ce que vous avez passé dans res.render -->
-=======
-            <% equipes.forEach(equipe => { %>
->>>>>>> 4e07aa702511a6144cbc5df1aaccdbd83f1dac4f
+            <% equipes.forEach(equipe => { %> <!-- Boucle correcte -->
                 <tr>
                     <td><%= equipe.nom %></td>
                     <td><%= equipe.poste %></td>

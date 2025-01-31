@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/formulaireProgrammetv.css">
+    <title>Ajouter un Programme TV</title>
+</head>
+
+<body>
+
+    <!-- Barre de navigation -->
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="/apropos">À propos</a></li>
+                <li><a href="/programmetv">Programme TV</a></li>
+                <li><a href="/formulaireprogrammetv">Formulaire programme tv</a></li>
+            </ul>
+        </nav>
+
+    </header> <br> <br>
+
+    <div class="logo">
+        <img src="images/hqdefault.jpg" alt="Logo de la musique">
+    </div>
+
+
+    <h1>Formulaire Programme TV</h1>
+
+    <form action="/ajouter-programme" method="POST">
+        <label for="titre_musique">titre musique:</label>
+        <input type="text" id="titre_musique" name="titre_musique" required>
+
+        <label for="nom"> nom:</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="horaire_debut">Horaire de début :</label>
+        <input type="time" id="horaire_debut" name="horaire_debut" required>
+
+        <label for="horaire_fin">Horaire de fin :</label>
+        <input type="time" id="horaire_fin" name="horaire_fin" required>
+
+        <button type="submit">Ajouter</button>
+    </form>
+
+</body>
+</html>

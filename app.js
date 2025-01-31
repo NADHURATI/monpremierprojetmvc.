@@ -66,6 +66,17 @@ app.get("/programmetv", (req, res) => {
     });
 });
 
+
+app.get("/formulaireProgrammetv", (req, res) => {
+    const programmetv = [
+        { titre: "Sambi tsara"},
+        { nom: "Chaldi"},
+        { horairedebut: "00:00:00"},
+        { horairefin: "06:56:00"}
+    ];
+    res.render("formulaireProgrammetv", {programme: programmetv});
+});
+
    
 
 
