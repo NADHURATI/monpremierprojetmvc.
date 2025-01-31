@@ -4,42 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/programmetv.css">
-
-    <title>Programmes</title>
+    <title>Programme TV</title>
 </head>
 
 <body>
 
+    <!-- Barre de navigation -->
     <header>
-
         <nav>
             <ul>
-                <li><a href="apropos">Apropos</a></li>
-                <li><a href="programmetv">Programme tv</a></li>
-        
+                <li><a href="/apropos">À propos</a></li>
+                <li><a href="/programmetv">Programme TV</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <h1>Liste des Programmes</h1>
+    <!-- Inclusion de la barre de navigation -->
+    <%- include("navbar") -%>
 
-    <div class="programme-container">
-        <% programmes.forEach(function(programme) { %>
-            <div class="programme-card">
-                <% if (programme.titre) { %>
-                    <h3><%= programme.titre %></h3>
-                <% } %>
-                <% if (programme.poste) { %>
-                    <p><strong>Poste :</strong> <%= programme.poste %></p>
-                    <p><strong>Horaire Début :</strong> <%= programme.horairedebut %></p>
-                    <p><strong>Horaire Fin :</strong> <%= programme.horairefin %></p>
-                <% } %>
-            </div>
-        <% }); %>
-    </div>
+    <h1>Programme de Diffusion</h1>
 
-    <footer>
-        <p>&copy; 2025 ChaineTV - Tous droits réservés</p>
-    </footer>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>titre programme</th>
+                <th>Poste</th>
+                <th>Horaire Début</th>
+                <th>Horaire Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% emissions.forEach(emission => { %>
+                <tr>
+                    <td><%= emission.titre_programme %></td>
+                    <td><%= emission.poste %></td>
+                    <td><%= emission.horaire_debut %></td>
+                    <td><%= emission.horaire_fin %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
 
 </body>
 </html>
-

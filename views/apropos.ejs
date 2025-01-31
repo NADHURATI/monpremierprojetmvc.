@@ -9,6 +9,7 @@
 
 <body>
 
+    <!-- Barre de navigation -->
     <header>
         <nav>
             <ul>
@@ -18,21 +19,22 @@
         </nav>
     </header>
 
+    <!-- Inclusion de la barre de navigation -->
+    <%- include("navbar") -%>
+
     <h1>Liste des Membres de l'Équipe</h1>
 
     <table border="1">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nom de l'Équipe</th>
+                <th>Nom</th>
                 <th>Poste</th>
                 <th>Responsable</th>
             </tr>
         </thead>
         <tbody>
-            <% equipe.forEach(function(equipe) { %>
+            <% equipes.forEach(equipe => { %> <!-- Utilisez 'equipes' ici, car c'est ce que vous avez passé dans res.render -->
                 <tr>
-                    <td><%= equipe.id %></td>
                     <td><%= equipe.nom %></td>
                     <td><%= equipe.poste %></td>
                     <td><%= equipe.responsable %></td>
@@ -43,5 +45,3 @@
 
 </body>
 </html>
-
-

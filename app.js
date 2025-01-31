@@ -26,35 +26,46 @@ app.use(express.urlencoded({extended: false}));
 // L'endroit ou se situent les vues qui saffichent sur la navigateur
 app.set("views", "./views");
 
-// Je précise le moteurde lecture de vues à savoir ejs
+// Je précise le moteur de lecture de vues à savoir ejs
 app.set("view engine", "ejs");
 
 // précise le répertoire 'public' qui contient les fichiers statics
 app.use(express.static("public"));
 
-// rOUTE "/apropos" avec la méthode "GET"
-app.get("/programmetv", (req, res) => {
-    const programmetitre = [
-        { titre: "chigoma" },
-        { titre: "manzaraka" },
-        { titre: "debat" },
-        { titre: "chant" },
-        { poste: "programmeur d'émission", horairedebut: "23:00:00", horairefin: "02:00:00" },
-        { poste: "camera men", horairedebut: "15:00:00", horairefin: "19:00:00" },
-        { poste: "ingénieur", horairedebut: "13:00:00", horairefin: "18:00:00" },
-        { poste: "réalisateur", horairedebut: "07:00:00", horairefin: "08:00:00" }
-    ];
-    res.render("programmetv", { programmes: programmetitre });
-});
+// ROUTE "/apropos" avec la méthode "GET"
+
 
 app.get("/apropos", (req, res) => {
-    const equipe = [
-        { nom: "Equipe A", poste: "Programmeur d'émission", responsable: "Alice Dupont" },
-        { nom: "Equipe B", poste: "Directrice générale", responsable: "Claire Lefevre" },
-        { nom: "Equipe C", poste: "Réalisation", responsable: "Marc Bernard" }
-    ];
+    req.getConnection((erreur, connection) => {
+        if (erreur) {
+            console.log("Erreur de connexion à la base de données", erreur);
+        }
+        connection.query("SELECT * FROM equipe", [], (err, resultat) => {
+            if (err) {
+                console.log("Erreur lors de l'exécution de la requête :", err);
+            }
+            console.log("Données récupérées :", resultat);
+            // Assurez-vous que 'resultat' est bien passé sous le nom 'equipes' dans la vue
+            res.render("apropos", { equipes: resultat });
+        });
+    });
+});
 
-    res.render("apropos", { equipe: equipe });
+
+app.get("/programmetv", (req, res) => {
+    req.getConnection((erreur, connection) => {
+        if (erreur) {
+            console.log("Erreur de connexion à la base de données", erreur);
+        }
+        connection.query("SELECT * FROM programmediffusion", [], (err, resultat) => {
+            if (err) {
+                console.log("Erreur lors de l'exécution de la requête :", err);
+            }
+            console.log("Données récupérées :", resultat);
+            // Assurez-vous que 'resultat' est bien passé sous le nom 'equipes' dans la vue
+            res.render("programmetv", { emissions: resultat });
+        });
+    });
 });
 
 
