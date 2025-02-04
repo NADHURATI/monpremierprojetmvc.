@@ -70,16 +70,46 @@ app.get("/programmetv", (req, res) => {
 app.get("/formulaireProgrammetv", (req, res) => {
     const programmetv = [
         { titre: "Sambi tsara"},
-        { nom: "Chaldi"},
+        { poste: "Chaldi"},
         { horairedebut: "00:00:00"},
         { horairefin: "06:56:00"}
     ];
     res.render("formulaireProgrammetv", {programme: programmetv});
 });
 
-   
 
+app.post("/ajouter-programme", (req, res) => {
+    console.log("Corps de la requête:", req.body);
 
+    let { titreMusique, poste, horairedebut, horairefin, lienyoutube, id } = req.body;
+
+    let titreMusiqueId = id && id.trim() !== "" ? id : null;
+    let requeteSQL;
+    let ordreDonnees;
+
+    if (!titreMusiqueId) {
+        requeteSQL = "INSERT INTO programmetv (id, titre_musique, poste, horaire_debut, horaire_fin, lienYouTube) VALUES (?,?,?,?,?,?)";
+        ordreDonnees = [null, titreMusique, poste, horairedebut, horairefin, lienyoutube];
+    } else {
+        requeteSQL = "UPDATE programmetv SET titre_musique = ?, poste = ?, horaire_debut = ?, horaire_fin = ?, lienYouTube = ? WHERE id = ?";
+        ordreDonnees = [titreMusique, poste, horairedebut, horairefin, lienyoutube, titreMusiqueId];
+    }
+
+    req.getConnection((erreur, connection) => {
+        if (erreur) {
+            console.log(erreur);
+        } else {
+            connection.query(requeteSQL, ordreDonnees, (err, result) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("Opération réussie == !");
+                    res.status(300).redirect("/ajouter-programme"); 
+                }
+            });
+        }
+    });
+});
 
 
 module.exports = app;

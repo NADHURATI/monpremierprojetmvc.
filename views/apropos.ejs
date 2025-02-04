@@ -23,19 +23,24 @@
     <!-- Inclusion de la barre de navigation -->
     <%- include("navbar") -%>
 
+    <!-- Titre principal de la page -->
     <h1>Liste des Membres de l'Équipe</h1>
 
+    <!-- Table pour afficher la liste des émissions -->
     <table border="1">
         <thead>
             <tr>
+                <!-- En-têtes de colonne -->
                 <th>Nom</th>
                 <th>Poste</th>
                 <th>Responsable</th>
             </tr>
         </thead>
         <tbody>
+            <!-- Boucle EJS pour parcourir et afficher les équipes -->
             <% equipes.forEach(equipe => { %> <!-- Boucle correcte -->
                 <tr>
+                    <!-- Affichage des données des équipes dynamiquement avec EJS -->
                     <td><%= equipe.nom %></td>
                     <td><%= equipe.poste %></td>
                     <td><%= equipe.responsable %></td>
@@ -43,6 +48,28 @@
             <% }); %>
         </tbody>
     </table>
+
+    <h2>Membres de l'équipe</h2>  <!-- Titre de la section affichant les membres de l'équipe -->
+
+    <!-- Boucle EJS permettant d'itérer sur chaque élément de la liste "equipes" et d'afficher ses informations -->
+    <% equipes.forEach(equipe=> { %>
+
+<div class="card">  <!-- Création d'une carte pour afficher les informations d'un membre de l'équipe -->
+    
+        <img src="images/Alice-Dupont.jpg" alt="Logo" style="width:15%"> <!-- Image du membre de l'équipe (Ici, une image statique "Alice-Dupont.jpg"-->
+  <div class="container">   <!-- Conteneur pour les informations du membre de l'équipe -->
+    <h4><b><%= equipe.responsable %></b></h4>  <!-- Affichage du nom du responsable de l'équipe -->
+    <p><%= equipe.poste %></p> <!-- Affichage du poste du membre de l'équipe -->
+    <p><%= equipe.nom %></p>  <!-- Affichage du nom de l'équipe à laquelle le membre appartient -->
+    <p><button>Add to Cart</button></p>  <!-- Bouton d'action (peut être remplacé par une action plus pertinente comme "Voir profil") -->
+
+  </div>  <!-- Fin du conteneur des informations -->
+
+</div>  <!-- Fin de la carte -->
+
+<% }); %>  <!-- Fin de la boucle EJS -->
+
+
 
 </body>
 </html>

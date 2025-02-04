@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/formulaireProgrammetv.css">
-    <title>Ajouter un Programme TV</title>
+    <!-- Déclaration du document HTML et de la langue utilisée (français) -->
+    <meta charset="UTF-8">  <!-- Définit l'encodage des caractères pour supporter les accents -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Permet l'adaptation du site aux différents écrans (responsive design) -->
+    <link rel="stylesheet" href="/css/formulaireProgrammetv.css">  <!-- Lien vers la feuille de style CSS externe -->
+    <title>Ajouter un Programme TV</title>  <!-- Titre de la page affiché dans l'onglet du navigateur -->
 </head>
 
 <body>
@@ -14,34 +15,57 @@
 
         <nav>
             <ul>
+                <!-- Menu de navigation permettant d'accéder à différentes pages -->
                 <li><a href="/apropos">À propos</a></li>
                 <li><a href="/programmetv">Programme TV</a></li>
                 <li><a href="/formulaireprogrammetv">Formulaire programme tv</a></li>
             </ul>
         </nav>
 
-    </header> <br> <br>
+    </header> <br> <br>  <!-- Espaces pour séparer visuellement les éléments -->
 
-    <div class="logo">
-        <img src="images/hqdefault.jpg" alt="Logo de la musique">
-    </div>
+    <!-- Intégration d'une vidéo YouTube dans la page -->
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/LxB63qoVEqM"   <!-- Lien de la vidéo YouTube -->
+    title="YouTube video player"    <!-- Titre de l'iframe -->
+    frameborder="0"   <!-- Supprime la bordure de l'iframe -->
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  <!-- Autorisations pour certaines fonctionnalités -->
+    allowfullscreen>  <!-- Permet la lecture en plein écran -->
+</iframe>
 
-
+<!-- Titre principal du formulaire -->
     <h1>Formulaire Programme TV</h1>
 
+<!-- Début du formulaire -->
+<!-- "action" définit l'URL où les données seront envoyées lors de la soumission -->
+<!-- "method" est défini sur POST, car on veut envoyer des données au serveur -->
     <form action="/ajouter-programme" method="POST">
+
+        <!-- Champ pour entrer le titre de la musique -->
         <label for="titre_musique">titre musique:</label>
+        <!-- Input de type texte pour saisir le titre -->
+    <!-- "id" et "name" permettent d'identifier et récupérer la valeur côté serveur -->
         <input type="text" id="titre_musique" name="titre_musique" required>
 
+<!-- Champ pour entrer le nom -->
         <label for="nom"> nom:</label>
+        <!-- Input de type texte pour saisir le nom -->
         <input type="text" id="nom" name="nom" required>
 
+<!-- Champ pour sélectionner l'horaire de début -->
         <label for="horaire_debut">Horaire de début :</label>
+        <!-- Input de type "time" qui permet de choisir une heure -->
         <input type="time" id="horaire_debut" name="horaire_debut" required>
 
+        <!-- Champ pour sélectionner l'horaire de fin -->
         <label for="horaire_fin">Horaire de fin :</label>
+        <!-- Input de type "time" pour choisir une heure de fin -->
         <input type="time" id="horaire_fin" name="horaire_fin" required>
+        <label for="lien_YouTube">Lien YouTube:</label>
+        <input type="text" id="lien_YouTube" name="lien_YouTube" required>
 
+    <!-- Bouton pour soumettre le formulaire -->
+    <!-- Lorsque l'utilisateur clique dessus, le formulaire est envoyé au serveur -->
         <button type="submit">Ajouter</button>
     </form>
 
