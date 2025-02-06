@@ -37,5 +37,25 @@ VALUES
 ('Débat', 'Ingénieur', '13:00:00', '18:00:00'),
 ('Chant', 'Réalisateur', '07:00:00', '08:00:00'),
 
+CREATE TABLE utilisateur (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(155) NOT NULL,
+    date_de_naissance VARCHAR(155)
+);
+
+INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, date_de_naissance)
+VALUES ("Bacar", "Moustapha", "bacarmoustapha@gmail.com", "Bacar770", "08/12/1996");
+
+INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, date_de_naissance)
+VALUES ("Abdallah", "Nayla", "naylaabdallah03@gmail.com", "Nayla038", "27/01/1989");
+
+INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, date_de_naissance)
+VALUES ("Moussa", "Assiyah", "assiyahmoussa27@gmail.fr", "Moussa27", "14/08/2001");
+
+INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, date_de_naissance)
+VALUES ("Said", "Houmadi", "saidhoumadi@gmail.fr", "Said1569", "30/10/2009");
 
 

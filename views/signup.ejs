@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+
+     <!-- Barre de navigation -->
+     <header>
+
+        <nav>
+            <ul>
+                <!-- Menu de navigation permettant d'accéder à différentes pages -->
+                <li><a href="/apropos">À propos</a></li>
+                <li><a href="/programmetv">Programme TV</a></li>
+                <li><a href="/formulaireprogrammetv">Formulaire programme tv</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+
+            </ul>
+        </nav>
+
+    </header> <br> <br>  <!-- Espaces pour séparer visuellement les éléments -->
+
+    <div class="container">
+        <h2>Créer un compte</h2>
+        <form action="/signup" method="POST">
+            <div class="input-group">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="input-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="date_naissance">Date de naissance :</label>
+                <input type="date" id="date_naissance" name="date_naissance" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">S'inscrire</button>
+        </form>
+        <p>Déjà un compte ? <a href="/login">Se connecter</a></p>
+    </div>
+    
+</body>
+</html>
