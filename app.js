@@ -5,6 +5,11 @@ const url = require("url");
 const fs = require("fs");
 const myConnection = require("express-myconnection");
 const connection = require("express-myconnection");
+const aproposRoutes = require('./routes/apropos');
+const programmetvRoutes = require('./routes/programmetv');
+const formulaireProgrammetvRoutes = require('./routes/formulaireProgrammetv');
+const loginRoutes = require('./routes/login');
+const signupRoutes = require('./routes/signup');
 
 const optionConnection = {
     host: "localhost",
@@ -32,42 +37,60 @@ app.set("view engine", "ejs");
 // précise le répertoire 'public' qui contient les fichiers statics
 app.use(express.static("public"));
 
+app.use('/',aproposRoutes);
+app.use('/', programmetvRoutes);
+app.use('/',formulaireProgrammetvRoutes);
+app.use('/', loginRoutes);
+app.use('/',signupRoutes);
 
-app.get("/apropos", (req, res) => {
+
+// Définition d'une route GET pour "/apropos"
+/* app.get("/apropos", (req, res) => {
+
+    // Récupération de la connexion à la base de données via req.getConnection()
     req.getConnection((erreur, connection) => {
-        if (erreur) {
-            console.log("Erreur de connexion à la base de données", erreur);
+        if (erreur) {   // Vérification s'il y a une erreur lors de la connexion
+            console.log("Erreur de connexion à la base de données", erreur);   // Affiche l'erreur dans la console
         }
+        // Exécution d'une requête SQL pour récupérer toutes les données de la table "equipe"
         connection.query("SELECT * FROM equipe", [], (err, resultat) => {
-            if (err) {
-                console.log("Erreur lors de l'exécution de la requête :", err);
+            if (err) {    // Vérification s'il y a une erreur lors de l'exécution de la requête SQL
+                console.log("Erreur lors de l'exécution de la requête :", err);   // Affiche l'erreur dans la console
             }
+            // Affichage des résultats de la requête dans la console
             console.log("Données récupérées :", resultat);
-            // Assurez-vous que 'resultat' est bien passé sous le nom 'equipes' dans la vue
+            
+            // Rendu de la vue "apropos" en passant les données récupérées sous le nom "equipes"
             res.render("apropos", { equipes: resultat });
         });
-    });
-});
+    }); 
+}); */
 
 
-app.get("/programmetv", (req, res) => {
+// Définition d'une route GET pour "/programmetv"
+/*app.get("/programmetv", (req, res) => {
+
+    // Récupération de la connexion à la base de données via req.getConnection()
     req.getConnection((erreur, connection) => {
-        if (erreur) {
-            console.log("Erreur de connexion à la base de données", erreur);
+        if (erreur) {   // Vérification s'il y a une erreur lors de la connexion à la base de données
+            console.log("Erreur de connexion à la base de données", erreur);   // Affiche l'erreur dans la console
         }
+        // Exécution d'une requête SQL pour récupérer toutes les données de la table "programmediffusion"
         connection.query("SELECT * FROM programmediffusion", (err, resultat) => {
-            if (err) {
-                console.log("Erreur lors de l'exécution de la requête :", err);
+            if (err) {   // Vérification s'il y a une erreur lors de l'exécution de la requête SQL
+                console.log("Erreur lors de l'exécution de la requête :", err);  // Affiche l'erreur dans la console
             }
+            // Affichage des résultats de la requête dans la console
             console.log("Données récupérées :", resultat);
-            // Passer les données correctement à la vue
+            
+            // Rendu de la vue "programmetv" en passant les données récupérées sous le nom "emissions"
             res.render("programmetv", { emissions: resultat });
         });
     });
-});
+}); */
 
 
-app.get("/formulaireProgrammetv", (req, res) => {
+/*app.get("/formulaireProgrammetv", (req, res) => {
     const programmetv = [
         { titre: "Sambi tsara"},
         { poste: "Chaldi"},
@@ -75,7 +98,7 @@ app.get("/formulaireProgrammetv", (req, res) => {
         { horairefin: "06:56:00"}
     ];
     res.render("formulaireProgrammetv", {programme: programmetv});
-});
+}); */
 
 
 app.post("/ajouter-programme", (req, res) => {
@@ -112,7 +135,7 @@ app.post("/ajouter-programme", (req, res) => {
 });
 
 
-app.get('/login', (req, res) => {
+/*app.get('/login', (req, res) => {
     res.render('login');  // Cela va chercher le fichier 'login.ejs' dans le dossier 'views'
 });
 
@@ -130,10 +153,10 @@ app.post("/login", (req, res) => {
             res.render("login", { utilisateur: resultat });
         });
     });
-});
+}); */
 
 
-app.get('/signup', (req, res) => {
+/*app.get('/signup', (req, res) => {
     res.render('signup');  // Cela va chercher le fichier 'login.ejs' dans le dossier 'views'
 });
 
@@ -151,7 +174,7 @@ app.post("/signup", (req, res) => {
             res.render("login", { utilisateur: resultat });
         });
     });
-});
+}); */
 
 
 
